@@ -5,8 +5,20 @@ import { ai } from '@zerostep/playwright';
 test('checkDiscountPrice', async ({ page }) => {
   const aiArgs = {page, test}
   await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/offers');
-  const text =  await ai("What is the Discount price of Tomato", aiArgs)
-  expect(text).toEqual("26")
+  const discountPriceOfTomato =  await ai("What is the Discount price of Tomato", aiArgs)
+  expect(discountPriceOfTomato).toEqual("26")
+
+  const actualPriceOfTomato= await ai("What is the Price of Tomato", aiArgs);
+  expect(actualPriceOfTomato).toEqual("37")
+
+  const difference= await ai("What is the value difference between actualPriceOfTomato and  discountPriceOfTomaton of Tomato", 
+    aiArgs)
+  expect(difference).toEqual("11")  
+
+
+
+
+
 
   // // Expect a title "to contain" a substring.
   // await expect(page).toHaveTitle(/Playwright/);
